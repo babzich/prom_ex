@@ -401,7 +401,7 @@ if Code.ensure_loaded?(Phoenix) do
     defp do_get_router_info(conn, routers, default_route_tags) do
       routers
       |> Enum.find_value(default_route_tags, fn router ->
-        case Phoenix.Router.route_info(router, conn.method, conn.request_path, "") do
+        case Phoenix.Router.route_info(router, conn.method, conn.request_path, conn.host) do
           :error ->
             false
 
